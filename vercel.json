@@ -6,7 +6,7 @@
         },
         {
             "src": "/impressum",
-            "dest": "/impressum"
+            "dest": "/"
         }
     ]
 }
