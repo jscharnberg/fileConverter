@@ -57,7 +57,7 @@ export default function FileUploader() {
     };
 
     const convertImage = () => {
-        if (outputFormat === '') {
+        if (outputFormat == '') {
             setOutputFormat('png');
         }
 
@@ -93,7 +93,7 @@ export default function FileUploader() {
     };
 
     const convertVideo = () => {
-        if (outputFormat === '') {
+        if (outputFormat == '') {
             setOutputFormat('mp4');
         }
         console.log("video start");
