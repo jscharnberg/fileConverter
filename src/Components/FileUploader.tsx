@@ -7,7 +7,6 @@ import { Button } from "@/Components/ui/button"
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
@@ -18,7 +17,6 @@ library.add(faUpload);
 
 export default function FileUploader() {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
     const [outputFormat, setOutputFormat] = useState<string>('');
     const [fileType, setFileType] = useState<string>('');
     const [isConverting, setIsConverting] = useState<boolean>(false);
@@ -37,7 +35,6 @@ export default function FileUploader() {
             const file = event.target.files[0];
             setSelectedFile(file);
             setFileType(file.type.split('/')[0]); // 'image' or 'video'
-            setDownloadUrl(null);
         }
     };
 
