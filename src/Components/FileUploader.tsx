@@ -75,7 +75,10 @@ export default function FileUploader() {
                     canvas.toBlob((blob) => {
                         if (blob) {
                             const url = URL.createObjectURL(blob);
-                            downloadFile(url, `converted-image.${outputFormat}`);
+                            if (selectedFile) {
+                                downloadFile(url, `${selectedFile.name.replace(/\.[^/.]+$/, "")}.${outputFormat}`);
+
+                            }
                         }
                     }, `image/${outputFormat}`);
                 }
