@@ -1,0 +1,92 @@
+.card {
+    margin-top: 100px;
+    padding: 0;
+}
+
+select {
+    background-color: inherit;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#container {
+    display: flex;
+    /* establish flex container */
+    flex-direction: row;
+    /* default value; can be omitted */
+    flex-wrap: nowrap;
+    /* default value; can be omitted */
+    justify-content: space-between;
+}
+
+#container>div {
+    width: 200px;
+}
+
+.flex-left {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.card-footer {
+    margin-top: 20px;
+}
+
+.delete-button {
+    font-size: 26px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #000;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+.close-smallScreen {
+    display: none !important;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.upload-icon {
+    margin-bottom: 20px;
+}
+
+.upload-text {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 724px) {
+    #container {
+        display: flex;
+        /* establish flex container */
+        flex-direction: row;
+        /* default value; can be omitted */
+        flex-wrap: wrap;
+        /* default value; can be omitted */
+        justify-content: center;
+    }
+
+    .file-name {
+        margin-bottom: 10px;
+    }
+
+    .close {
+        display: none !important;
+    }
+
+    .close-smallScreen {
+        display: inline-flex !important;
+    }
+}
