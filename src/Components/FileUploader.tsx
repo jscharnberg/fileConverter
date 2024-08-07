@@ -57,6 +57,10 @@ export default function FileUploader() {
     };
 
     const convertImage = () => {
+        if (outputFormat === '') {
+            setOutputFormat('png');
+        }
+
         const reader = new FileReader();
         reader.onload = (event) => {
             const img = new Image();
@@ -89,6 +93,9 @@ export default function FileUploader() {
     };
 
     const convertVideo = () => {
+        if (outputFormat === '') {
+            setOutputFormat('mp4');
+        }
         console.log("video start");
 
         // Note: This example assumes conversion can be done client-side, but real video conversion usually requires server-side processing.
