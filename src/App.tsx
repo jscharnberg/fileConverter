@@ -3,7 +3,7 @@ import FileUploader from './Components/FileUploader/FileUploader'
 import { ThemeProvider } from "@/Components/theme-provider"
 import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Impressum from './Components/Pages/Impressum/Impressum'
 
 function App() {
