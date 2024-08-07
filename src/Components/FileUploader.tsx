@@ -20,6 +20,7 @@ export default function FileUploader() {
     const [outputFormat, setOutputFormat] = useState<string>('');
     const [fileType, setFileType] = useState<string>('');
     const [isConverting, setIsConverting] = useState<boolean>(false);
+    const [formatChanged, setFormatChanged] = useState<boolean>(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleButtonClick = () => {
@@ -28,6 +29,8 @@ export default function FileUploader() {
 
     const handleFormatChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setOutputFormat(event.target.value);
+
+        setFormatChanged(true);
     };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,9 +60,6 @@ export default function FileUploader() {
     };
 
     const convertImage = () => {
-        if (outputFormat == '') {
-            setOutputFormat('png');
-        }
 
         const reader = new FileReader();
         reader.onload = (event) => {
@@ -93,10 +93,6 @@ export default function FileUploader() {
     };
 
     const convertVideo = () => {
-        if (outputFormat == '') {
-            setOutputFormat('mp4');
-        }
-        console.log("video start");
 
         // Note: This example assumes conversion can be done client-side, but real video conversion usually requires server-side processing.
         const reader = new FileReader();
@@ -108,8 +104,6 @@ export default function FileUploader() {
     };
 
     const downloadFile = (url: string, filename: string) => {
-
-        console.log("download start");
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = 'blob';
@@ -200,7 +194,8 @@ export default function FileUploader() {
                             <div className='convert'>
                                 Convert to: &nbsp;
                                 {fileType === 'image' && (
-                                    <select value={outputFormat} onChange={handleFormatChange}>
+                                    <select onChange={handleFormatChange}>
+                                        <option disabled selected>Select</option>
                                         <option value="png">PNG</option>
                                         <option value="jpeg">JPEG</option>
                                         <option value="webp">WEBP</option>
@@ -209,10 +204,11 @@ export default function FileUploader() {
                                     </select>
                                 )}
                                 {fileType === 'video' && (
-                                    <select value={outputFormat} onChange={handleFormatChange}>
+                                    <select onChange={handleFormatChange}>
+                                        <option disabled selected>Select</option>
                                         <option value="mp4">MP4</option>
                                         <option value="webm">WEBM</option>
-                                        <option value="ogv">OGV</option>
+                                        <option value="ogv">OGV</option>s
                                     </select>
                                 )}
                             </div>
@@ -226,9 +222,8 @@ export default function FileUploader() {
                             <Button className='flex-left footer-button close-smallScreen' onClick={closeCard}>
                                 Close
                             </Button>
-                            <Button className='flex-left footer-button' onClick={handleConvertAndDownload}>
+                            <Button className='flex-left footer-button' onClick={handleConvertAndDownload} disabled={!formatChanged} >
                                 {isConverting ? <span className="spinner"></span> : 'Convert and Download'}
-
                             </Button>
                         </CardFooter>
                     </Card>
