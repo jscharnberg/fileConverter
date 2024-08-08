@@ -5,7 +5,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
